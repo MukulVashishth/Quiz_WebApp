@@ -1,0 +1,73 @@
+.mainCard {
+  background-color: #af9cf3;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-end; */
+}
+
+.progressBar {
+  position: relative;
+  top: 4vw;
+  left: 48vw;
+  background-color: white;
+  width: 10vw;
+  border-radius: 50%;
+}
+
+.CircularProgressbar-text {
+  fill: #44b77b;
+}
+
+.contentCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-left: 5vw;
+  height: 80vh;
+  width: 90vw;
+  padding: auto;
+  background-color: white;
+  border-radius: 3rem;
+  margin: 0px 0 2vw 2.1vw;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  height: 50%;
+}
+
+.options {
+  background-color: #f3f4fa;
+  width: 70%;
+  height: 5vw;
+  padding-left: 1vw;
+  padding-top: 2vw;
+}
+
+.lbl {
+  margin-left: 1vw;
+}
+
+.nxtButton {
+  width: 100%;
+  text-align: center;
+}
+
+.nxtBtn {
+  height: 7vh;
+  width: 46vw;
+  background-color: #ff3b3c !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: xx-large !important;
+}
