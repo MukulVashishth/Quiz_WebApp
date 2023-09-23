@@ -1,5 +1,5 @@
 import "../Questions.css";
-import { Button } from "grommet";
+import { Button, RadioButtonGroup, Image } from "grommet";
 import { useState, useEffect } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -12,9 +12,42 @@ interface Question {
   correct_answer: number;
 }
 
+const Option = ({
+  choice,
+  setUserChoice,
+  setOneSelect,
+}: {
+  choice: string[];
+  userChoice: string;
+  setUserChoice: React.Dispatch<React.SetStateAction<string>>;
+  oneSelect: boolean;
+  setOneSelect: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [value, setValue] = useState("");
+  return (
+    <>
+      <RadioButtonGroup
+        name="doc"
+        options={choice}
+        value={value}
+        width={"100%"}
+        onChange={(event) => {
+          setUserChoice(event.target.value);
+          setOneSelect(true);
+          setValue(event.target.value);
+        }}
+      />
+    </>
+  );
+};
+
 const Questions = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [data, setData] = useState<Question[] | null>(null);
+
+  const [markedAnswers, setMarkedAnswers] = useState<boolean[]>([]);
+  const [userChoice, setUserChoice] = useState("");
+  const [oneSelect, setOneSelect] = useState(false);
 
   useEffect(() => {
     axios
@@ -31,7 +64,15 @@ const Questions = () => {
     questionNum < 9
       ? setQuestionNum((prevQuestionNum) => prevQuestionNum + 1)
       : "Completed";
+
+    markedAnswers.push(
+      userChoice === currentQuestion?.answers[currentQuestion.correct_answer]
+    );
+    setOneSelect(false);
+    // console.log(markedAnswers);
   };
+
+  console.log(markedAnswers);
 
   return (
     <>
@@ -49,17 +90,19 @@ const Questions = () => {
 
           {currentQuestion && (
             <div className="option">
-              {currentQuestion.answers.map((option, index) => (
-                <div key={index} className="options">
-                  <input type="radio" id={`option${index}`} value={option} />
-                  <label className="lbl" htmlFor={`option${index}`}>
-                    {option}
-                  </label>
-                </div>
-              ))}
+              <Option
+                choice={currentQuestion.answers}
+                userChoice={userChoice}
+                setUserChoice={setUserChoice}
+                oneSelect={oneSelect}
+                setOneSelect={setOneSelect}
+              />
             </div>
           )}
 
+          {currentQuestion?.image !== null && (
+            <img src="https://ibb.co/JKQkLTs" />
+          )}
           <div className="nxtButton">
             <Button
               className="nxtBtn"
@@ -67,6 +110,7 @@ const Questions = () => {
               size="large"
               label="Next"
               onClick={handleNextClick}
+              disabled={!oneSelect}
             />
           </div>
         </div>
