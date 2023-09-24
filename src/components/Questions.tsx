@@ -47,7 +47,7 @@ const Questions = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [data, setData] = useState<Question[] | null>(null);
 
-  const [markedAnswers, setMarkedAnswers] = useState<boolean[]>([]);
+  const [markedAnswers] = useState<boolean[]>([]);
   const [userChoice, setUserChoice] = useState("");
   const [oneSelect, setOneSelect] = useState(false);
 
