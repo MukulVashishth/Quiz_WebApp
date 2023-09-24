@@ -1,13 +1,13 @@
 import "../Questions.css";
-import { Button, RadioButtonGroup, Image } from "grommet";
+import { Button, RadioButtonGroup } from "grommet";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
 
 interface Question {
   question: string;
-  image: string | null;
   answers: string[];
   correct_answer: number;
 }
@@ -49,6 +49,8 @@ const Questions = () => {
   const [userChoice, setUserChoice] = useState("");
   const [oneSelect, setOneSelect] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get("https://mocki.io/v1/e2d645bc-6ede-47f3-8a20-eeb1298418ea")
@@ -58,24 +60,22 @@ const Questions = () => {
   const currentQuestion =
     data && data.length > questionNum ? data[questionNum] : null;
 
-  console.log(currentQuestion);
-
   const handleNextClick = () => {
-    questionNum < 9
-      ? setQuestionNum((prevQuestionNum) => prevQuestionNum + 1)
-      : "Completed";
-
     markedAnswers.push(
       userChoice === currentQuestion?.answers[currentQuestion.correct_answer]
     );
+    questionNum < 9
+      ? setQuestionNum((prevQuestionNum) => prevQuestionNum + 1)
+      : navigate("/results", {
+          state: markedAnswers,
+        });
+
     setOneSelect(false);
     // console.log(markedAnswers);
   };
 
-  console.log(markedAnswers);
-
   const buttonText = questionNum < 9 ? "Next" : "Submit";
-
+  console.log("Line 83", markedAnswers);
   return (
     <>
       <div className="mainCard">
@@ -102,10 +102,6 @@ const Questions = () => {
             </div>
           )}
 
-          {/* Image rendering */}
-          {currentQuestion?.image !== null && (
-            <img src="https://ibb.co/JKQkLTs" />
-          )}
           <div className="nxtButton">
             <Button
               className="nxtBtn"
