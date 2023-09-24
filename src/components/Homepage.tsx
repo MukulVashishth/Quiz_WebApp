@@ -2,20 +2,12 @@ import { Button, Heading } from "grommet";
 import Logo from "../assets/images/logo.svg";
 import { useNavigate } from "react-router-dom";
 
-// import u from "../assets/images/u.svg";
-// import p from "../assets/images/p.svg";
-// import Logo from "../assets/images/r.svg";
-// import Logo from "../assets/images/a.svg";
-// import Logo from "../assets/images/i.svg";
-// import Logo from "../assets/images/s.svg";
-// import Logo from "../assets/images/e.svg";
-
 const Homepage = () => {
   const navigate = useNavigate();
   return (
     <div className="main">
       <div className="container">
-        <img src={Logo} />
+        <img src={Logo} /> {/* Display the logo image */}
         <Heading className="title">upraised</Heading>
       </div>
 
@@ -32,7 +24,7 @@ const Homepage = () => {
           size="large"
           label="Start"
           onClick={() => {
-            navigate("/nextPage");
+            navigate("/nextPage"); // Navigate to the "/nextPage" route when the button is clicked
           }}
         />
       </div>

@@ -6,16 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 import { Heading, Meter, Button } from "grommet";
 
-// import GaugeComponent from "react-gauge-component";
-
 const Submission = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const booleanArray = location.state;
+  const location = useLocation(); // Get the location object from React Router
+  const navigate = useNavigate(); // Get the navigation function from React Router
+  const booleanArray = location.state; // Extract the markedAnswers array from the Questions component to calculate wrong and
+  // right answers.
+  let correctAnswer = 0; // Initialize a variable to count correct answers
+  let wrongAnswer = 0; // Initialize a variable to count wrong answers
 
-  let correctAnswer = 0;
-  let wrongAnswer = 0;
-
+  // Iterate through the booleanArray(markedAnswers) to count correct and wrong answers
   booleanArray.forEach((element: boolean) => {
     if (element == false) {
       wrongAnswer++;
@@ -31,6 +30,7 @@ const Submission = () => {
             <Heading className="testHeading">Your result</Heading>
           </div>
 
+          {/* Displaying the correct and incorrect answers as meter */}
           <div className="meter">
             <Meter
               values={[
@@ -102,13 +102,13 @@ function DisplayResult({
           marginBottom: "20px",
         }}
       >
-        {displayText == "Incorrect" ? (
+        {displayText == "Incorrect" ? ( // Conditional rendering based on displayText
           <img src={Incorrect} />
         ) : (
           <img src={Correct} />
         )}
-        <span>{calcResult}</span>
-        <p>{displayText}</p>
+        <span className="resultNum">{calcResult}</span>
+        <p className="displayText">{displayText}</p>
       </div>
     </>
   );

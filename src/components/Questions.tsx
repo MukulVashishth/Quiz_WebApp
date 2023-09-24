@@ -6,12 +6,14 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
 
+// Define the structure of a question
 interface Question {
   question: string;
   answers: string[];
   correct_answer: number;
 }
 
+// Define the Option component for displaying multiple-choice options
 const Option = ({
   choice,
   setUserChoice,
@@ -51,6 +53,7 @@ const Questions = () => {
 
   const navigate = useNavigate();
 
+  // Fetch the quiz data from a mock API
   useEffect(() => {
     axios
       .get("https://mocki.io/v1/e2d645bc-6ede-47f3-8a20-eeb1298418ea")
@@ -60,10 +63,13 @@ const Questions = () => {
   const currentQuestion =
     data && data.length > questionNum ? data[questionNum] : null;
 
+  // Handle the click event for the "Next" button
   const handleNextClick = () => {
     markedAnswers.push(
       userChoice === currentQuestion?.answers[currentQuestion.correct_answer]
     );
+
+    // Check if it's the last question; navigate to the results page if so
     questionNum < 9
       ? setQuestionNum((prevQuestionNum) => prevQuestionNum + 1)
       : navigate("/results", {
@@ -71,11 +77,11 @@ const Questions = () => {
         });
 
     setOneSelect(false);
-    // console.log(markedAnswers);
   };
 
+  // Determine the text to display on the button (Next or Submit)
   const buttonText = questionNum < 9 ? "Next" : "Submit";
-  console.log("Line 83", markedAnswers);
+
   return (
     <>
       <div className="mainCard">
@@ -92,6 +98,7 @@ const Questions = () => {
 
           {currentQuestion && (
             <div className="option">
+              {/* Render multiple-choice options */}
               <Option
                 choice={currentQuestion.answers}
                 userChoice={userChoice}
@@ -103,6 +110,7 @@ const Questions = () => {
           )}
 
           <div className="nxtButton">
+            {/* Render the "Next" or "Submit" button */}
             <Button
               className="nxtBtn"
               color="#FF3B3C"

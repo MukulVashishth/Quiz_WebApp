@@ -25,14 +25,13 @@
 }
 
 .CircularProgressbar-text {
-  font-family: "Nunito", sans-serif !important;
   font-style: italic;
+  font-family: "Nunito", sans-serif !important;
   font-weight: 900;
   font-size: 1.5rem !important;
 }
 
 .contentCard {
-  /* background-color: yellow !important; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -69,7 +68,7 @@ label {
   font-weight: 620;
   font-size: 2.5rem;
   line-height: 2.8rem;
-  margin-top: 39px;
+  margin-top: 2.438rem;
 }
 
 .dgrQDw {

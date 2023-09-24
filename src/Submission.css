@@ -11,7 +11,7 @@
 .newCard {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
   justify-content: flex-start;
   align-items: center;
   padding-left: 6vw;
@@ -25,5 +25,20 @@
 
 .testHeading {
   font-family: "Nunito", sans-serif !important;
-  margin-top: 21px;
+  margin-top: 1.313rem;
+}
+
+.resultNum {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: bold;
+  padding-top: 1.188rem;
+}
+
+.displayText {
+  font-family: "Source Sans 3", sans-serif;
+  padding-top: 1.188rem;
+}
+
+.startAgain {
+  margin-top: 2.188rem;
 }
