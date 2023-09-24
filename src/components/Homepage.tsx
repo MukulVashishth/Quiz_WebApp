@@ -16,7 +16,7 @@ const Homepage = () => {
     <div className="main">
       <div className="container">
         <img src={Logo} />
-        <Heading>upraised</Heading>
+        <Heading className="title">upraised</Heading>
       </div>
 
       <div className="circle">

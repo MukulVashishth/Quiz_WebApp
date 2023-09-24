@@ -5,9 +5,6 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-end; */
 }
 
 .progressBar {
@@ -19,8 +16,19 @@
   border-radius: 50%;
 }
 
+.CircularProgressbar .CircularProgressbar-text {
+  fill: black !important;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #44b77b !important;
+}
+
 .CircularProgressbar-text {
-  fill: #44b77b;
+  font-family: "Nunito", sans-serif !important;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 1.625rem !important;
 }
 
 .contentCard {
@@ -51,14 +59,21 @@
 
 label {
   background-color: #f3f4fa;
-  width: 70%;
+  width: 70% !important;
   height: 5vw;
   padding-left: 1vw;
-  padding-top: 2vw;
+  padding-top: 0.313rem;
 }
 
-.lbl {
-  margin-left: 1vw;
+.questionDisplay {
+  font-family: "Nunito";
+  font-weight: 620;
+  font-size: 2.5rem;
+  line-height: 2.8rem;
+}
+
+.dgrQDw {
+  font-family: "Nunito";
 }
 
 .nxtButton {
@@ -71,6 +86,7 @@ label {
   width: 46vw;
   background-color: #ff3b3c !important;
   color: white !important;
-  font-weight: 600 !important;
   font-size: xx-large !important;
+  font-family: "Nunito", sans-serif !important;
+  font-weight: 700 !important;
 }

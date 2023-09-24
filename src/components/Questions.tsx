@@ -74,6 +74,8 @@ const Questions = () => {
 
   console.log(markedAnswers);
 
+  const buttonText = questionNum < 9 ? "Next" : "Submit";
+
   return (
     <>
       <div className="mainCard">
@@ -100,6 +102,7 @@ const Questions = () => {
             </div>
           )}
 
+          {/* Image rendering */}
           {currentQuestion?.image !== null && (
             <img src="https://ibb.co/JKQkLTs" />
           )}
@@ -108,7 +111,7 @@ const Questions = () => {
               className="nxtBtn"
               color="#FF3B3C"
               size="large"
-              label="Next"
+              label={buttonText}
               onClick={handleNextClick}
               disabled={!oneSelect}
             />
